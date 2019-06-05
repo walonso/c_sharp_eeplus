@@ -29,7 +29,7 @@ namespace EntendiendoEPPLUS
             string h = string.Empty;
             DataTable dt = GetTable();
             string rootapath = HttpContext.Current.Request.MapPath("~");
-            string newFileName = string.Concat(rootapath, @"Temp\Plantilla - copia.xlsx");
+            string newFileName = string.Concat(rootapath, @"Temp\Plantilla.xlsx");
             string realFileName = string.Concat(rootapath, @"Temp\Plantilla.xlsx");
 
             //Hacer pivot table (Tabla dinamica)
@@ -121,7 +121,7 @@ namespace EntendiendoEPPLUS
                 revenueDataField.Name = "Tiempo";
 
                 pivotTable.SortOnDataField(salesPersonRowField, revenueDataField, true);
-                pivotTable.Top10(salesPersonRowField, revenueDataField, 5, false,false);
+                pivotTable.Top10(salesPersonRowField, revenueDataField, 3, false,false);
 
                 //Crear el chart table
                 CreateChart(ws, pivotTable);
@@ -129,12 +129,12 @@ namespace EntendiendoEPPLUS
 
 
                 #region TemporalPruebas
-                string rootapath = HttpContext.Current.Request.MapPath("~");
-                string newFileName = string.Concat(rootapath, @"Temp\Plantilla_Ralenti_NO_WT.xlsx");
+                //string rootapath = HttpContext.Current.Request.MapPath("~");
+                //string newFileName = string.Concat(rootapath, @"Temp\Plantilla.xlsx");
 
-                FileInfo excelFile = new FileInfo(newFileName);
-                if (excelFile.Exists)
-                    excelFile.Delete();
+                FileInfo excelFile = new FileInfo(curFileName);
+                //if (excelFile.Exists)
+                //    excelFile.Delete();
                 ep.SaveAs(excelFile);
                 #endregion
                 //AdventureWorks8_PivotChart_SalesBySalesperson(ws, pivotTable);
@@ -241,12 +241,12 @@ namespace EntendiendoEPPLUS
                 }
 
                 #region TemporalPruebas
-                string rootapath = HttpContext.Current.Request.MapPath("~");
-                string newFileName = string.Concat(rootapath, @"Temp\Plantilla.xlsx");
+                //string rootapath = HttpContext.Current.Request.MapPath("~");
+                //string newFileName = string.Concat(rootapath, @"Temp\Plantilla.xlsx");
 
-                FileInfo excelFile = new FileInfo(newFileName);
-                if (excelFile.Exists)
-                    excelFile.Delete();
+                FileInfo excelFile = new FileInfo(curFileName);
+                //if (excelFile.Exists)
+                //    excelFile.Delete();
                 ep.SaveAs(excelFile);
                 #endregion
 
